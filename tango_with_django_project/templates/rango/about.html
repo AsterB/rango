@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+  <head>
+    <title>Rango</title>
+  </head>
+  <body>
+    <h1>This is the about page...</h1>
+    <div>
+      This tutorial has been put together by Traktor <your-name> <br />
+      <br />
+    </div>
+    <div>
+      <img src="{% static 'images/img2.jpg' %}" alt="wolverine drawing"/>
+      <hr><hr>
+      <p>A cat from media dir:</p>
+      <img src="{{ MEDIA_URL}}cat.jpg" />
+    </div>
+  </body>
+</html>
