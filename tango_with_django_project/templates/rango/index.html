@@ -1,41 +1,43 @@
-<!DOCTYPE html>
-
+{% extends 'rango/base.html' %}
 {% load staticfiles %}
-
-<html>
-  <head>
-    <title>Rango</title>
-  </head>
-  <body>
-    <h1>Rango says...</h1>
-    <div>hey there partner!</div>
-    </div>
-
-<h2>Most Liked Categories:</h2>
+{% block title_block %}
+  Index
+{% endblock %}
+{% block body_block %}
+  <div>
+      <h1>Rango says...</h1>
+    hey there partner!
+  </div>
+  <div>
     <div>
-      {% if categories %}
-        <ul>
-        {% for category in categories %}
-        <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
-        {% endfor %}
-      </ul>
+      <h3>Most Liked Categories</h3>
+    </div>
+        {% if categories %}
+           <ul>
+               {% for category in categories %}
+                <li><a href="{% url 'show_category' category.slug %}">{{ category.name }}</a></li>
+               {% endfor %}
+           </ul>
       {% else %}
-          <strong>There are no categories</strong>
+           <strong>There are no categories present.</strong>
       {% endif %}
     </div>
-<br>
-    <h2>Most Viewed Pages:</h2>
-      {% if pages %}
-        <ul>
-        {% for page in pages %}
-            <li><a href="">{{ page.title }}</a></li>
-        {% endfor %}
-      </ul>
-      {% endif %}
 
-    <div>
-      <a href="/rango/about/">About</a><br />
-      <img src="{% static 'images/img1.jpg' %}" alt="calvin and hobbes"/>
+      <div>
+        <div>
+          <h3>Most Viewed Pages</h3>
+        </div>
+             {% if pages %}
+              <ul>
+                 {% for page in pages %}
+                 <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                 {% endfor %}
+              </ul>
+            {% else %}
+             <strong>There are no categories present.</strong>
+              {% endif %}
     </div>
-  </body>
-</html>
+
+      <img src="{% static "images/img1.jpg" %}" alt="Picture of Rango" />
+
+{% endblock %}
