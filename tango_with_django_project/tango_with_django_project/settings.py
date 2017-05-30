@@ -49,7 +49,24 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
+    'registration' # registration redux
 ]
+
+
+# REGISTRATION REDUX:
+# If True, users can register
+REGISTRATION_OPEN = True
+# One-week activation window; you may, of course, use a different value.
+ACCOUNT_ACTIVATION_DAYS = 7
+# If True, the user will be automatically logged in.
+REGISTRATION_AUTO_LOGIN = True
+# The page you want users to arrive at after they successfully log in
+LOGIN_REDIRECT_URL = '/rango/'
+# The page users are directed to if they are not logged in,
+# and are trying to access pages requiring authentication
+LOGIN_URL = '/accounts/login/'
+
+
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -137,4 +154,10 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
-LOGIN_URL = '/rango/login/'
+LOGIN_URL = '/accounts/login/'
+
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True   -  a nev magaert beszel.
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = False  -  persistent session. it's the default, don't have to set in settings
+# SESSION_COOKIE_AGE = 1209600 (2 weeks, in seconds) - it's default! dont have to set in settings, only if I want to modify
+# to clear database: $ python manage.py clearsessions  -  If you are using the database backend forsessions
+                                                    #  - suggested to run daily
